@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mauricio Sialer | Head of Digital Commerce | P&L Owner</title>
+    <meta name="description" content="P&L owner with 10+ years scaling 0-to-1 digital platforms across FMCG, marketplace technology, and financial services in LATAM and Europe.">
+    <meta name="author" content="Mauricio Sialer">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mauricio.sialer.com">
+
+    <!-- Open Graph / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mauricio.sialer.com">
+    <meta property="og:title" content="Mauricio Sialer | Head of Digital Commerce | P&L Owner">
+    <meta property="og:description" content="P&L owner with 10+ years scaling 0-to-1 digital platforms across FMCG, marketplace technology, and financial services in LATAM and Europe.">
+    <meta property="og:image" content="https://mauricio.sialer.com/og-image.png">
+    <meta property="og:site_name" content="Mauricio Sialer">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mauricio.sialer.com">
+    <meta property="twitter:title" content="Mauricio Sialer | Head of Digital Commerce | P&L Owner">
+    <meta property="twitter:description" content="P&L owner with 10+ years scaling 0-to-1 digital platforms across FMCG, marketplace technology, and financial services in LATAM and Europe.">
+    <meta property="twitter:image" content="https://mauricio.sialer.com/og-image.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#1e3a5f',
+                        'navy-light': '#2a4a73',
+                        gold: '#c9a227',
+                        'gold-light': '#d4b43a',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    lineHeight: {
+                        'relaxed': '1.7',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>MS</text></svg>">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+        .hero-bg {
+            background: linear-gradient(160deg, #1e3a5f 0%, #243b5a 100%);
+        }
+        .photo-ring {
+            box-shadow: 0 0 0 2px #c9a227;
+        }
+        .btn-gold {
+            background-color: #c9a227;
+            color: #1e3a5f;
+            transition: all 0.2s ease;
+        }
+        .btn-gold:hover {
+            background-color: #d4b43a;
+        }
+        .btn-white {
+            background-color: #ffffff;
+            color: #1e3a5f;
+            transition: all 0.2s ease;
+        }
+        .btn-white:hover {
+            background-color: #f8f9fa;
+        }
+        .btn-navy {
+            background-color: #1e3a5f;
+            color: #ffffff;
+            transition: all 0.2s ease;
+        }
+        .btn-navy:hover {
+            background-color: #2a4a73;
+        }
+        .card-clean {
+            background-color: #ffffff;
+            border-top: 3px solid #c9a227;
+            transition: transform 0.2s ease;
+        }
+        .card-clean:hover {
+            transform: translateY(-2px);
+        }
+        .gold-accent {
+            color: #c9a227;
+        }
+        .section-spacing {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        @media (min-width: 768px) {
+            .section-spacing {
+                padding-top: 8rem;
+                padding-bottom: 8rem;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-700 antialiased bg-white">
+
+    <!-- Hero Section -->
+    <header class="hero-bg min-h-[85vh] flex items-center justify-center">
+        <div class="max-w-4xl mx-auto px-6 py-20 text-center">
+            <!-- Professional photo -->
+            <div class="mb-10 flex justify-center">
+                <div class="relative w-[120px] h-[120px] md:w-[150px] md:h-[150px] rounded-full overflow-hidden photo-ring bg-navy-light flex items-center justify-center">
+                    <img src="/mauricio-sialer-photo.jpg" alt="Mauricio Sialer" class="absolute inset-0 w-full h-full object-cover z-10" loading="eager" onerror="this.style.display='none'">
+                    <span class="font-serif text-3xl md:text-4xl font-bold text-white/60 z-0">MS</span>
+                </div>
+            </div>
+
+            <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-5 tracking-tight">
+                Mauricio Sialer
+            </h1>
+            <p class="text-xl md:text-2xl text-white/90 font-light mb-6">
+                Head of Digital Commerce <span class="gold-accent">|</span> P&L Owner <span class="gold-accent">|</span> E-Commerce <span class="gold-accent">•</span> Fintech
+            </p>
+            <p class="text-lg md:text-xl text-white/75 max-w-2xl mx-auto mb-12 leading-relaxed">
+                Scaling 0-to-1 digital platforms that drive profitable growth.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/mauricio-sialer-cv.pdf" download class="btn-gold px-8 py-4 rounded font-semibold text-base inline-flex items-center justify-center" aria-label="Download Mauricio Sialer's CV">
+                    Download CV
+                </a>
+                <a href="https://linkedin.com/in/msialer" target="_blank" rel="noopener noreferrer" class="btn-white px-8 py-4 rounded font-semibold text-base inline-flex items-center justify-center" aria-label="Connect with Mauricio Sialer on LinkedIn">
+                    Connect on LinkedIn
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section-spacing bg-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="space-y-8 text-lg md:text-xl text-slate-600 leading-relaxed">
+                <p>
+                    P&L owner with 10+ years scaling 0-to-1 digital platforms across FMCG, marketplace technology, and financial services in LATAM and Europe. Led cross-functional teams of 16, driving BEES Peru to #1 worldwide in AB InBev network and launching BNPL, subscription, and loyalty products that scaled customer profitability, delivering six-figure net benefits.
+                </p>
+                <p>
+                    I don't lead technology I've only been briefed on. I am hands-on with generative AI, LLMs, and agentic frameworks — running them on my own to understand their operational mechanics, failure modes, and real implications before they become board motions. IESE MBA. Trilingual: English (bilingual), Spanish (native), Portuguese (B2).
+                </p>
+            </div>
+            <div class="mt-14 pt-10 border-t border-slate-200">
+                <p class="text-center text-base md:text-lg font-medium text-navy">
+                    P&L Management <span class="gold-accent">•</span> B2B Marketplaces <span class="gold-accent">•</span> Fintech <span class="gold-accent">•</span> Subscription Commerce <span class="gold-accent">•</span> Digital Transformation <span class="gold-accent">•</span> Cross-Functional Leadership
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Track Record Section -->
+    <section id="track-record" class="section-spacing bg-slate-50">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold text-navy mb-16 text-center">Track Record</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                <!-- Card 1 -->
+                <div class="card-clean rounded-sm p-8 md:p-10">
+                    <h3 class="font-serif text-xl md:text-2xl font-bold text-navy mb-3">BEES Peru #1 Worldwide</h3>
+                    <p class="text-lg md:text-xl text-slate-700 font-semibold mb-2">Scaled to #1 in ABI network.</p>
+                    <p class="text-base text-slate-600">EBITDA $3M → $4.2M. 20K weekly visits.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card-clean rounded-sm p-8 md:p-10">
+                    <h3 class="font-serif text-xl md:text-2xl font-bold text-navy mb-3">Amazon BNPL Launch</h3>
+                    <p class="text-lg md:text-xl text-slate-700 font-semibold mb-2">+16% seller sales.</p>
+                    <p class="text-base text-slate-600">40% retention post-90 days.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card-clean rounded-sm p-8 md:p-10">
+                    <h3 class="font-serif text-xl md:text-2xl font-bold text-navy mb-3">Cineplanet Subscription</h3>
+                    <p class="text-lg md:text-xl text-slate-700 font-semibold mb-2">Pioneered cinema subscription.</p>
+                    <p class="text-base text-slate-600">+65% LTV within 12 months.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="card-clean rounded-sm p-8 md:p-10">
+                    <h3 class="font-serif text-xl md:text-2xl font-bold text-navy mb-3">BBVA Profitability Engine</h3>
+                    <p class="text-lg md:text-xl text-slate-700 font-semibold mb-2">Contract-level cost allocation.</p>
+                    <p class="text-base text-slate-600">$250K net benefit per project.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What I'm Looking For Section -->
+    <section id="looking-for" class="section-spacing bg-navy text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold mb-6">What I'm Looking For</h2>
+            <p class="text-lg md:text-xl text-white/80 mb-12">Actively seeking Director-level roles in:</p>
+            <div class="flex flex-wrap justify-center gap-4 max-w-2xl mx-auto">
+                <span class="bg-gold text-navy px-6 py-3 rounded font-semibold text-base">Digital Commerce & Platforms</span>
+                <span class="bg-gold text-navy px-6 py-3 rounded font-semibold text-base">B2B Marketplaces & E-Commerce</span>
+                <span class="bg-gold text-navy px-6 py-3 rounded font-semibold text-base">Fintech & Embedded Payments</span>
+                <span class="bg-gold text-navy px-6 py-3 rounded font-semibold text-base">Subscription & Loyalty Products</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="section-spacing bg-white">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold text-navy mb-6">Let's Drive Scale Together</h2>
+            <p class="text-lg md:text-xl text-slate-600 mb-12 leading-relaxed">
+                Let's discuss how I can drive digital scale and profitability for your organization.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="mailto:mauricio@sialer.com" class="btn-gold px-8 py-4 rounded font-semibold text-base inline-flex items-center justify-center" aria-label="Send email to Mauricio Sialer">
+                    Email
+                </a>
+                <a href="https://linkedin.com/in/msialer" target="_blank" rel="noopener noreferrer" class="btn-navy px-8 py-4 rounded font-semibold text-base inline-flex items-center justify-center" aria-label="Visit Mauricio Sialer's LinkedIn profile">
+                    LinkedIn
+                </a>
+                <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" class="btn-navy px-8 py-4 rounded font-semibold text-base inline-flex items-center justify-center" aria-label="Book a 15-minute call with Mauricio Sialer">
+                    Book a 15-Min Call
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white py-10 border-t border-white/10">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-white/70 text-base">
+                © 2026 Mauricio Sialer <span class="gold-accent">|</span> 
+                <a href="mailto:mauricio@sialer.com" class="hover:text-gold transition-colors">mauricio@sialer.com</a> <span class="gold-accent">|</span> 
+                <a href="https://linkedin.com/in/msialer" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition-colors">linkedin.com/in/msialer</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
