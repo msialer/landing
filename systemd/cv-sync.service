@@ -1,0 +1,13 @@
+[Unit]
+Description=Sync Mauricio Sialer CV from Google Drive to landing repo
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/ubuntu/projects/landing
+ExecStart=/home/ubuntu/projects/landing/scripts/sync-cv.sh
+User=ubuntu
+Environment="PATH=/home/ubuntu/.local/bin:/usr/local/bin:/usr/bin:/bin"
+StandardOutput=journal
+StandardError=journal

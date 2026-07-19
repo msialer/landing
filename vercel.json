@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "github": {
+    "enabled": true,
+    "silent": true
+  },
+  "routes": [
+    {
+      "src": "/mauricio-sialer-cv.pdf",
+      "dest": "/mauricio-sialer-cv.pdf",
+      "headers": {
+        "Content-Type": "application/pdf",
+        "Content-Disposition": "attachment; filename=\"Mauricio-Sialer-CV.pdf\""
+      }
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
+}
