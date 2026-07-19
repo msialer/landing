@@ -56,4 +56,19 @@ git add "${TARGET_FILE}"
 git commit -m "chore: sync CV from Google Drive (${LATEST_REMOTE})"
 git push origin main
 
-echo "[$(date -Iseconds)] CV synced and pushed. Vercel will redeploy automatically."
+echo "[$(date -Iseconds)] CV synced and pushed."
+
+# Trigger a production deployment on Vercel using the stored token.
+VERCEL_TOKEN_FILE="${HOME}/.config/landing/vercel-token"
+if [ -f "${VERCEL_TOKEN_FILE}" ]; then
+  VERCEL_TOKEN="$(cat "${VERCEL_TOKEN_FILE}")"
+  if [ -n "${VERCEL_TOKEN}" ]; then
+    echo "[$(date -Iseconds)] Triggering Vercel production deploy..."
+    npx vercel@latest --prod --yes --token "${VERCEL_TOKEN}"
+    echo "[$(date -Iseconds)] Vercel deploy triggered."
+  else
+    echo "[$(date -Iseconds)] WARNING: Vercel token file is empty. Skipping deploy trigger."
+  fi
+else
+  echo "[$(date -Iseconds)] WARNING: Vercel token file not found at ${VERCEL_TOKEN_FILE}. Skipping deploy trigger."
+fi
