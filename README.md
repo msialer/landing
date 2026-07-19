@@ -6,13 +6,14 @@ Single-page landing page for Mauricio Sialer, Head of Digital Commerce and P&L O
 
 - **Canonical:** https://mauricio.sialer.com
 - **Short:** https://m.sialer.com
-- **Vercel preview:** https://landing-msialer.vercel.app
+- **Vercel preview:** https://landing-97vedd0ut-msialer.vercel.app
 
 ## Stack
 
 - Single `index.html` file.
 - Tailwind CSS via CDN.
 - Google Fonts: Playfair Display + Inter.
+- Designed with [Kimi Websites](https://www.kimi.com/features/websites).
 - Hosted on Vercel free tier with custom domain.
 
 ## Local preview
