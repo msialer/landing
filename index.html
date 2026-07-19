@@ -124,8 +124,9 @@
         <div class="max-w-4xl mx-auto px-6 py-20 text-center">
             <!-- Professional photo -->
             <div class="mb-10 flex justify-center">
-                <div class="w-[120px] h-[120px] md:w-[150px] md:h-[150px] rounded-full overflow-hidden photo-ring bg-navy-light">
-                    <img src="/mauricio-sialer-photo.jpg" alt="Mauricio Sialer" class="w-full h-full object-cover" loading="eager">
+                <div class="relative w-[120px] h-[120px] md:w-[150px] md:h-[150px] rounded-full overflow-hidden photo-ring bg-navy-light flex items-center justify-center">
+                    <img src="/mauricio-sialer-photo.jpg" alt="Mauricio Sialer" class="absolute inset-0 w-full h-full object-cover z-10" loading="eager" onerror="this.style.display='none'">
+                    <span class="font-serif text-3xl md:text-4xl font-bold text-white/60 z-0">MS</span>
                 </div>
             </div>
 
