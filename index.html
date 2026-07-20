@@ -112,17 +112,10 @@
   </script>
   <style>
     html, body {
+      height: auto;
       overscroll-behavior-y: none;
       overflow-x: hidden;
     }
-    .page-wrapper {
-      min-height: 100vh;
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-    }
-    .page-wrapper > main { flex: 1 0 auto; }
-    .page-wrapper > footer { flex-shrink: 0; }
     .balance { text-wrap: balance; }
     /* Text-only links: accent underline, medium weight */
     .link-accent {
@@ -138,7 +131,6 @@
 
 <body class="bg-[#F2F2F2] text-ink font-sans antialiased leading-relaxed">
 
-  <div class="page-wrapper">
   <main>
     <div class="bg-white">
       <div class="max-w-5xl mx-auto px-6 sm:px-10">
@@ -278,7 +270,6 @@
       <a href="https://linkedin.com/in/msialer" target="_blank" rel="noopener" class="hover:text-ink transition">linkedin.com/in/msialer</a>
     </div>
   </footer>
-  </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
