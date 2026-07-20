@@ -153,6 +153,11 @@
       transition: text-decoration-color 150ms ease;
     }
     .link-accent:hover { text-decoration-color: #c35a01; }
+    /* FAQ accordion: hide default marker and animate the + icon */
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] summary .accordion-icon { transform: rotate(45deg); }
+    details .accordion-icon { transition: transform 200ms ease; }
   </style>
 </head>
 
@@ -260,8 +265,38 @@
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section id="faq" class="bg-white">
+      <div class="max-w-5xl mx-auto px-6 sm:px-10 py-20 sm:py-24">
+        <h2 class="text-sm font-sans font-semibold uppercase text-accent" style="letter-spacing:2px">Frequently Asked Questions</h2>
+        <div class="mt-14 max-w-3xl space-y-4">
+          <details class="group border-b border-ink/10 pb-4">
+            <summary class="list-none cursor-pointer flex items-center justify-between text-lg font-semibold select-none">
+              <span>What roles is Mauricio Sialer open to?</span>
+              <span class="ml-4 text-accent accordion-icon">+</span>
+            </summary>
+            <p class="mt-3 text-ink/75" style="line-height:1.7">Director and VP-level roles in Digital Products & Platforms, B2B Marketplaces & E-Commerce, Fintech & Embedded Payments, and Subscription & Loyalty Products.</p>
+          </details>
+          <details class="group border-b border-ink/10 pb-4">
+            <summary class="list-none cursor-pointer flex items-center justify-between text-lg font-semibold select-none">
+              <span>What industries does Mauricio specialize in?</span>
+              <span class="ml-4 text-accent accordion-icon">+</span>
+            </summary>
+            <p class="mt-3 text-ink/75" style="line-height:1.7">FMCG, marketplace technology, financial services, fintech, subscription commerce, and B2B digital trade across LATAM and Europe.</p>
+          </details>
+          <details class="group border-b border-ink/10 pb-4">
+            <summary class="list-none cursor-pointer flex items-center justify-between text-lg font-semibold select-none">
+              <span>What is Mauricio's track record?</span>
+              <span class="ml-4 text-accent accordion-icon">+</span>
+            </summary>
+            <p class="mt-3 text-ink/75" style="line-height:1.7">He led BEES Peru to #1 worldwide in the AB InBev network, launched BNPL and subscription products at Amazon and Cineplanet, and has led cross-functional teams of 16+ delivering six-figure net benefits.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT -->
-    <section id="contact" class="bg-white">
+    <section id="contact">
       <div class="max-w-5xl mx-auto px-6 sm:px-10 py-20 sm:py-28">
         <div class="max-w-3xl">
         <h2 class="font-serif text-3xl sm:text-4xl font-semibold">Let's Drive Scale Together</h2>
@@ -274,11 +309,11 @@
             Book a 15-min call
           </a>
           <a href="mailto:mauricio@sialer.com"
-             class="inline-block border-2 border-accent text-accent font-semibold px-8 py-4 rounded-md tracking-wide hover:bg-accent hover:text-ink transition">
+             class="inline-block border-2 border-accent text-[#737373] font-semibold px-8 py-4 rounded-md tracking-wide hover:bg-accent hover:text-ink transition">
             Email
           </a>
           <a href="https://linkedin.com/in/msialer" target="_blank" rel="noopener"
-             class="font-semibold text-accent link-accent">
+             class="font-semibold text-[#737373] link-accent">
             LinkedIn
           </a>
         </div>
@@ -286,36 +321,15 @@
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="bg-white">
-      <div class="max-w-5xl mx-auto px-6 sm:px-10 py-20 sm:py-24">
-        <h2 class="text-sm font-sans font-semibold uppercase text-accent" style="letter-spacing:2px">Frequently Asked Questions</h2>
-        <div class="mt-14 max-w-3xl space-y-8">
-          <div>
-            <h3 class="text-lg font-semibold">What roles is Mauricio Sialer open to?</h3>
-            <p class="mt-2 text-ink/75" style="line-height:1.7">Director and VP-level roles in Digital Products & Platforms, B2B Marketplaces & E-Commerce, Fintech & Embedded Payments, and Subscription & Loyalty Products.</p>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold">What industries does Mauricio specialize in?</h3>
-            <p class="mt-2 text-ink/75" style="line-height:1.7">FMCG, marketplace technology, financial services, fintech, subscription commerce, and B2B digital trade across LATAM and Europe.</p>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold">What is Mauricio's track record?</h3>
-            <p class="mt-2 text-ink/75" style="line-height:1.7">He led BEES Peru to #1 worldwide in the AB InBev network, launched BNPL and subscription products at Amazon and Cineplanet, and has led cross-functional teams of 16+ delivering six-figure net benefits.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
   </main>
 
   <!-- FOOTER -->
-  <footer class="bg-[#F2F2F2]">
-    <div class="max-w-5xl mx-auto px-6 sm:px-10 py-10 text-sm text-ink/70">
+  <footer class="bg-[#737373]">
+    <div class="max-w-5xl mx-auto px-6 sm:px-10 py-10 text-sm text-white/90">
       © <span id="year">2026</span> Mauricio Sialer&nbsp;|&nbsp;
-      <a href="mailto:mauricio@sialer.com" class="hover:text-ink transition">mauricio@sialer.com</a>
+      <a href="mailto:mauricio@sialer.com" class="hover:text-white transition">mauricio@sialer.com</a>
       &nbsp;|&nbsp;
-      <a href="https://linkedin.com/in/msialer" target="_blank" rel="noopener" class="hover:text-ink transition">linkedin.com/in/msialer</a>
+      <a href="https://linkedin.com/in/msialer" target="_blank" rel="noopener" class="hover:text-white transition">linkedin.com/in/msialer</a>
     </div>
   </footer>
 
