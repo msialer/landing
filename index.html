@@ -116,6 +116,13 @@
       overscroll-behavior-y: none;
       overflow-x: hidden;
     }
+    .hero-photo {
+      width: 100%;
+      max-width: 28rem;
+    }
+    @media (orientation: portrait) and (max-width: 767px) {
+      .hero-photo { width: 80%; }
+    }
     .balance { text-wrap: balance; }
     /* Text-only links: accent underline, medium weight */
     .link-accent {
@@ -141,7 +148,7 @@
           <img
             src="mauricio-sialer.jpg"
             alt="Mauricio Sialer, Head of Digital Commerce"
-            class="w-full max-w-md mx-auto md:mx-0 rounded-full object-cover aspect-square"
+            class="hero-photo mx-auto md:mx-0 rounded-full object-cover aspect-square"
           />
         </div>
         <div>
