@@ -7,7 +7,6 @@ Wants=network-online.target
 Type=oneshot
 WorkingDirectory=/home/ubuntu/projects/personal-server/landing
 ExecStart=/home/ubuntu/projects/personal-server/landing/scripts/sync-cv.sh
-User=ubuntu
 Environment="PATH=/home/ubuntu/.local/bin:/usr/local/bin:/usr/bin:/bin"
 StandardOutput=journal
 StandardError=journal
