@@ -32,7 +32,7 @@ Vercel deploys automatically on every push to `main` (GitHub integration).
 To deploy manually from the VM:
 
 ```bash
-cd /home/ubuntu/projects/landing
+cd /home/ubuntu/projects/personal-server/landing
 npx vercel@latest --prod --token=$(cat /home/ubuntu/.config/landing/vercel-token) --yes
 ```
 
@@ -61,7 +61,7 @@ import os
 
 src = '/tmp/<downloaded-file>.png'  # adjust filename
 # or src = '/tmp/<downloaded-file>.jpg'
-dst = '/home/ubuntu/projects/landing/mauricio-sialer.jpg'
+dst = '/home/ubuntu/projects/personal-server/landing/mauricio-sialer.jpg'
 
 img = Image.open(src)
 if img.mode in ('RGBA', 'P'):
@@ -108,7 +108,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = '/home/ubuntu/projects/landing';
+const ROOT = '/home/ubuntu/projects/personal-server/landing';
 const PORT = 8765;
 
 const server = http.createServer((req, res) => {
