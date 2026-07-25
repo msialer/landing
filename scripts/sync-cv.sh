@@ -19,7 +19,7 @@ LATEST_REMOTE=$(rclone lsf "${REMOTE_DIR}" \
   --include "*.pdf" 2>/dev/null \
   | grep -i "Head-of-Digital-Product-Growth" \
   | sort -t'(' -k2 -r \
-  | head -n1 || true)
+  | head -n1)
 
 if [ -z "${LATEST_REMOTE}" ]; then
   echo "[$(date -Iseconds)] ERROR: No CV PDF found in Google Drive folder ${GDRIVE_FOLDER_ID}"
@@ -47,21 +47,6 @@ echo "[$(date -Iseconds)] Updated ${TARGET_FILE}"
 
 # Commit and push if there are changes.
 cd "${REPO_DIR}"
-CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
-if [ "${CURRENT_BRANCH}" != "main" ]; then
-  echo "[$(date -Iseconds)] ERROR: not on main branch (current: ${CURRENT_BRANCH}). Aborting."
-  exit 1
-fi
-
-# Abort if the working tree has changes outside the CV file.
-CV_REL_PATH="mauricio-sialer-cv.pdf"
-OTHER_CHANGES=$(git status --porcelain | grep -v " ${CV_REL_PATH}$" || true)
-if [ -n "${OTHER_CHANGES}" ]; then
-  echo "[$(date -Iseconds)] ERROR: working tree has unexpected changes besides ${CV_REL_PATH}. Aborting."
-  echo "${OTHER_CHANGES}"
-  exit 1
-fi
-
 if git diff --quiet HEAD -- "${TARGET_FILE}" 2>/dev/null; then
   echo "[$(date -Iseconds)] No git diff. Skipping commit."
   exit 0
@@ -69,7 +54,6 @@ fi
 
 git add "${TARGET_FILE}"
 git commit -m "chore: sync CV from Google Drive (${LATEST_REMOTE})"
-git pull --rebase origin main
 git push origin main
 
 echo "[$(date -Iseconds)] CV synced and pushed."

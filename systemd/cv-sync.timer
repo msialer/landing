@@ -2,7 +2,7 @@
 Description=Daily CV sync from Google Drive
 
 [Timer]
-OnCalendar=*-*-* 04:00:00 America/Lima
+OnCalendar=*-*-* 04:00:00
 Persistent=true
 RandomizedDelaySec=300
 

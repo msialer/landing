@@ -32,7 +32,7 @@ Vercel deploys automatically on every push to `main` (GitHub integration).
 To deploy manually from the VM:
 
 ```bash
-cd /home/ubuntu/projects/personal-server/landing
+cd /home/ubuntu/projects/landing
 npx vercel@latest --prod --token=$(cat /home/ubuntu/.config/landing/vercel-token) --yes
 ```
 
@@ -61,7 +61,7 @@ import os
 
 src = '/tmp/<downloaded-file>.png'  # adjust filename
 # or src = '/tmp/<downloaded-file>.jpg'
-dst = '/home/ubuntu/projects/personal-server/landing/mauricio-sialer.jpg'
+dst = '/home/ubuntu/projects/landing/mauricio-sialer.jpg'
 
 img = Image.open(src)
 if img.mode in ('RGBA', 'P'):
@@ -108,7 +108,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = '/home/ubuntu/projects/personal-server/landing';
+const ROOT = '/home/ubuntu/projects/landing';
 const PORT = 8765;
 
 const server = http.createServer((req, res) => {
@@ -153,4 +153,4 @@ A `gapBelowFooter` close to `0` means the page ends exactly at the footer.
 
 ## CV sync
 
-The latest CV is synced daily from Google Drive via a systemd timer running on the Personal Server. See `scripts/sync-cv.sh` and `systemd/cv-sync.*` in this repo (they are also symlinked from the Personal Server systemd user units).
+The latest CV is synced daily from Google Drive via a systemd timer running on the Personal Server. See `scripts/sync-cv.sh` and `systemd/cv-sync.*` in the Personal Server repo.
