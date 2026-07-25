@@ -19,7 +19,7 @@ LATEST_REMOTE=$(rclone lsf "${REMOTE_DIR}" \
   --include "*.pdf" 2>/dev/null \
   | grep -i "Head-of-Digital-Product-Growth" \
   | sort -t'(' -k2 -r \
-  | head -n1)
+  | head -n1 || true)
 
 if [ -z "${LATEST_REMOTE}" ]; then
   echo "[$(date -Iseconds)] ERROR: No CV PDF found in Google Drive folder ${GDRIVE_FOLDER_ID}"
@@ -54,6 +54,7 @@ fi
 
 git add "${TARGET_FILE}"
 git commit -m "chore: sync CV from Google Drive (${LATEST_REMOTE})"
+git pull --rebase origin main
 git push origin main
 
 echo "[$(date -Iseconds)] CV synced and pushed."
