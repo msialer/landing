@@ -52,6 +52,16 @@ if [ "${CURRENT_BRANCH}" != "main" ]; then
   echo "[$(date -Iseconds)] ERROR: not on main branch (current: ${CURRENT_BRANCH}). Aborting."
   exit 1
 fi
+
+# Abort if the working tree has changes outside the CV file.
+CV_REL_PATH="mauricio-sialer-cv.pdf"
+OTHER_CHANGES=$(git status --porcelain | grep -v " ${CV_REL_PATH}$" || true)
+if [ -n "${OTHER_CHANGES}" ]; then
+  echo "[$(date -Iseconds)] ERROR: working tree has unexpected changes besides ${CV_REL_PATH}. Aborting."
+  echo "${OTHER_CHANGES}"
+  exit 1
+fi
+
 if git diff --quiet HEAD -- "${TARGET_FILE}" 2>/dev/null; then
   echo "[$(date -Iseconds)] No git diff. Skipping commit."
   exit 0
