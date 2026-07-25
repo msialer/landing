@@ -153,4 +153,4 @@ A `gapBelowFooter` close to `0` means the page ends exactly at the footer.
 
 ## CV sync
 
-The latest CV is synced daily from Google Drive via a systemd timer running on the Personal Server. See `scripts/sync-cv.sh` and `systemd/cv-sync.*` in the Personal Server repo.
+The latest CV is synced daily from Google Drive via a systemd timer running on the Personal Server. See `scripts/sync-cv.sh` and `systemd/cv-sync.*` in this repo (they are also symlinked from the Personal Server systemd user units).
