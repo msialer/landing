@@ -47,6 +47,11 @@ echo "[$(date -Iseconds)] Updated ${TARGET_FILE}"
 
 # Commit and push if there are changes.
 cd "${REPO_DIR}"
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
+if [ "${CURRENT_BRANCH}" != "main" ]; then
+  echo "[$(date -Iseconds)] ERROR: not on main branch (current: ${CURRENT_BRANCH}). Aborting."
+  exit 1
+fi
 if git diff --quiet HEAD -- "${TARGET_FILE}" 2>/dev/null; then
   echo "[$(date -Iseconds)] No git diff. Skipping commit."
   exit 0
