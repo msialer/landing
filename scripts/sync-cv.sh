@@ -59,7 +59,7 @@ git push origin main
 echo "[$(date -Iseconds)] CV synced and pushed."
 
 # Trigger a production deployment on Vercel using the stored token.
-VERCEL_TOKEN_FILE="${HOME}/.config/landing/vercel-token"
+VERCEL_TOKEN_FILE="${HOME}/projects/personal-server/infra/credentials/landing/vercel-token"
 if [ -f "${VERCEL_TOKEN_FILE}" ]; then
   VERCEL_TOKEN="$(cat "${VERCEL_TOKEN_FILE}")"
   if [ -n "${VERCEL_TOKEN}" ]; then

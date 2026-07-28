@@ -33,10 +33,10 @@ To deploy manually from the VM:
 
 ```bash
 cd /home/ubuntu/projects/landing
-npx vercel@latest --prod --token=$(cat /home/ubuntu/.config/landing/vercel-token) --yes
+npx vercel@latest --prod --token=$(cat /home/ubuntu/projects/personal-server/infra/credentials/landing/vercel-token) --yes
 ```
 
-The Vercel token is stored at `/home/ubuntu/.config/landing/vercel-token`.
+The Vercel token is stored at `/home/ubuntu/projects/personal-server/infra/credentials/landing/vercel-token`.
 
 ## Update the headshot photo
 
@@ -84,7 +84,7 @@ PY
 git add mauricio-sialer.jpg
 git commit -m "assets(hero): update headshot photo"
 git push origin main
-npx vercel@latest --prod --token=$(cat /home/ubuntu/.config/landing/vercel-token) --yes
+npx vercel@latest --prod --token=$(cat /home/ubuntu/projects/personal-server/infra/credentials/landing/vercel-token) --yes
 ```
 
 ## Debug layout / scroll overflow
