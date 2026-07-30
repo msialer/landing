@@ -208,6 +208,39 @@
       background: transparent;
       flex: 1 1 auto;
     }
+    #booking-modal-error {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      z-index: 3;
+      padding: 32px;
+      text-align: center;
+    }
+    #booking-modal-error.is-visible {
+      display: flex;
+    }
+    #booking-modal-error p {
+      color: #737373;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    #booking-modal-error a {
+      display: inline-block;
+      background: #FD7402;
+      color: #171412;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: filter 0.2s ease;
+    }
+    #booking-modal-error a:hover {
+      filter: brightness(0.95);
+    }
     @media (max-width: 640px) {
       #booking-modal {
         align-items: flex-end;
@@ -371,9 +404,12 @@
         <div class="spinner"></div>
         <span>Loading booking page...</span>
       </div>
+      <div id="booking-modal-error">
+        <p>The booking page could not be loaded in the modal.<br>Please open it in a new tab.</p>
+        <a href="https://time.sialer.com/mauricio" target="_blank" rel="noopener">Open booking page</a>
+      </div>
       <iframe
         id="booking-modal-iframe"
-        src="https://time.sialer.com/mauricio/15-minutes?embed=1&parent-origin=https://mauricio.sialer.com"
         title="Book a call"
       ></iframe>
     </div>
@@ -385,75 +421,99 @@
       const modal = document.getElementById('booking-modal');
       const container = document.getElementById('booking-modal-container');
       const loader = document.getElementById('booking-modal-loader');
+      const errorPane = document.getElementById('booking-modal-error');
       const iframe = document.getElementById('booking-modal-iframe');
+      const IFRAME_SRC = 'https://time.sialer.com/mauricio/15-minutes?embed=1&parent-origin=https://mauricio.sialer.com';
       const EMBED_SCRIPT = 'https://time.sialer.com/embed.js';
       const FALLBACK_URL = 'https://time.sialer.com/mauricio';
-      const LOAD_TIMEOUT_MS = 12000;
+      const LOAD_TIMEOUT_MS = 25000;
 
-      let scriptLoaded = false;
-      let fallbackTimer = null;
+      let loadTimer = null;
+      let isOpen = false;
 
       function loadEmbedScript() {
         if (document.querySelector('script[src*="time.sialer.com/embed.js"]')) return;
         const script = document.createElement('script');
         script.src = EMBED_SCRIPT;
         script.async = true;
-        script.onload = function() { scriptLoaded = true; };
-        script.onerror = function() { scriptLoaded = false; };
         document.head.appendChild(script);
       }
 
-      function openFallback() {
-        window.open(FALLBACK_URL, '_blank', 'noopener,noreferrer');
+      function showError() {
+        loader.style.display = 'none';
+        errorPane.classList.add('is-visible');
+      }
+
+      function clearLoadTimer() {
+        if (loadTimer) {
+          clearTimeout(loadTimer);
+          loadTimer = null;
+        }
+      }
+
+      function resetModal() {
+        clearLoadTimer();
+        loader.style.display = 'flex';
+        errorPane.classList.remove('is-visible');
+        iframe.style.height = '';
       }
 
       function openModal() {
+        if (isOpen) return;
+        isOpen = true;
+        resetModal();
         modal.classList.add('is-open');
         document.body.style.overflow = 'hidden';
-        loader.style.display = 'flex';
 
-        // Fallback: if iframe doesn't load in time, close modal and open fallback.
-        fallbackTimer = setTimeout(() => {
-          closeModal();
-          openFallback();
+        // Load iframe lazily, only when the modal becomes visible.
+        if (!iframe.src) {
+          iframe.src = IFRAME_SRC;
+        }
+
+        // If the iframe doesn't signal a successful load in time, show error UI.
+        loadTimer = setTimeout(() => {
+          showError();
         }, LOAD_TIMEOUT_MS);
 
-        // Ensure script is loaded for postMessage resize handling.
+        // Ensure embed script is available for postMessage resize handling.
         loadEmbedScript();
       }
 
       function closeModal() {
         modal.classList.remove('is-open');
         document.body.style.overflow = '';
-        if (fallbackTimer) {
-          clearTimeout(fallbackTimer);
-          fallbackTimer = null;
-        }
+        isOpen = false;
+        clearLoadTimer();
+        // Clear iframe src to stop background activity and force reload next time.
+        iframe.src = '';
       }
 
       btn.addEventListener('click', openModal);
 
       // Close on backdrop click.
       modal.addEventListener('click', function(e) {
-        if (e.target === modal || e.target === container) {
+        if (e.target === modal) {
           closeModal();
         }
       });
 
       // Close on Escape.
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        if (e.key === 'Escape' && isOpen) {
           closeModal();
         }
       });
 
-      // Hide loader when iframe loads.
+      // Hide loader when iframe finishes loading.
       iframe.addEventListener('load', function() {
+        clearLoadTimer();
         loader.style.display = 'none';
-        if (fallbackTimer) {
-          clearTimeout(fallbackTimer);
-          fallbackTimer = null;
-        }
+      });
+
+      // If the iframe fails to load, show error UI.
+      iframe.addEventListener('error', function() {
+        clearLoadTimer();
+        showError();
       });
 
       // Handle Tymeslot resize messages.
@@ -469,7 +529,7 @@
         }
       });
 
-      // Preload embed script after window load for faster subsequent interactions.
+      // Preload embed script after window load.
       if (document.readyState === 'complete') {
         loadEmbedScript();
       } else {
