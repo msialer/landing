@@ -137,6 +137,88 @@
       transition: text-decoration-color 150ms ease;
     }
     .link-accent:hover { text-decoration-color: #c35a01; }
+
+    /* Booking modal */
+    #booking-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(23, 20, 18, 0.75);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+      padding: 16px;
+    }
+    #booking-modal.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+    #booking-modal-container {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      max-height: calc(100vh - 32px);
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 25px 60px -12px rgba(23, 20, 18, 0.35);
+      overflow: hidden;
+      transform: scale(0.96);
+      transition: transform 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    #booking-modal.is-open #booking-modal-container {
+      transform: scale(1);
+    }
+    #booking-modal-loader {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      z-index: 2;
+      gap: 12px;
+    }
+    #booking-modal-loader .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #f3f3f3;
+      border-top-color: #FD7402;
+      border-radius: 50%;
+      animation: booking-spin 1s linear infinite;
+    }
+    #booking-modal-loader span {
+      color: #737373;
+      font-size: 14px;
+    }
+    @keyframes booking-spin {
+      to { transform: rotate(360deg); }
+    }
+    #booking-modal iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: none;
+      background: transparent;
+      flex: 1 1 auto;
+    }
+    @media (max-width: 640px) {
+      #booking-modal {
+        align-items: flex-end;
+        padding: 0;
+      }
+      #booking-modal-container {
+        max-width: 100%;
+        max-height: calc(100vh - 32px);
+        border-radius: 12px 12px 0 0;
+      }
+    }
   </style>
 </head>
 
@@ -253,10 +335,10 @@
           Let's discuss how we can team up to drive digital scale and profitability.
         </p>
         <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-          <a href="https://time.sialer.com/mauricio" target="_blank" rel="noopener"
-             class="inline-block bg-accent text-ink font-bold px-8 py-4 rounded-md tracking-wide hover:brightness-95 transition">
+          <button type="button" id="book-call-btn"
+                  class="inline-block bg-accent text-ink font-bold px-8 py-4 rounded-md tracking-wide hover:brightness-95 transition disabled:opacity-70 disabled:cursor-not-allowed">
             Book a call
-          </a>
+          </button>
           <a href="mailto:mauricio@sialer.com"
              class="inline-block border-2 border-accent text-[#737373] font-semibold px-8 py-4 rounded-md tracking-wide hover:bg-accent hover:text-ink transition">
             Email
@@ -281,6 +363,120 @@
       <a href="https://linkedin.com/in/msialer" target="_blank" rel="noopener" class="hover:text-ink transition">linkedin.com/in/msialer</a>
     </div>
   </footer>
+
+  <!-- Booking modal -->
+  <div id="booking-modal" role="dialog" aria-modal="true" aria-label="Book a call">
+    <div id="booking-modal-container">
+      <div id="booking-modal-loader">
+        <div class="spinner"></div>
+        <span>Loading booking page...</span>
+      </div>
+      <iframe
+        id="booking-modal-iframe"
+        src="https://time.sialer.com/mauricio/15-minutes?embed=1&parent-origin=https://mauricio.sialer.com"
+        title="Book a call"
+      ></iframe>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const btn = document.getElementById('book-call-btn');
+      const modal = document.getElementById('booking-modal');
+      const container = document.getElementById('booking-modal-container');
+      const loader = document.getElementById('booking-modal-loader');
+      const iframe = document.getElementById('booking-modal-iframe');
+      const EMBED_SCRIPT = 'https://time.sialer.com/embed.js';
+      const FALLBACK_URL = 'https://time.sialer.com/mauricio';
+      const LOAD_TIMEOUT_MS = 12000;
+
+      let scriptLoaded = false;
+      let fallbackTimer = null;
+
+      function loadEmbedScript() {
+        if (document.querySelector('script[src*="time.sialer.com/embed.js"]')) return;
+        const script = document.createElement('script');
+        script.src = EMBED_SCRIPT;
+        script.async = true;
+        script.onload = function() { scriptLoaded = true; };
+        script.onerror = function() { scriptLoaded = false; };
+        document.head.appendChild(script);
+      }
+
+      function openFallback() {
+        window.open(FALLBACK_URL, '_blank', 'noopener,noreferrer');
+      }
+
+      function openModal() {
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        loader.style.display = 'flex';
+
+        // Fallback: if iframe doesn't load in time, close modal and open fallback.
+        fallbackTimer = setTimeout(() => {
+          closeModal();
+          openFallback();
+        }, LOAD_TIMEOUT_MS);
+
+        // Ensure script is loaded for postMessage resize handling.
+        loadEmbedScript();
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+        if (fallbackTimer) {
+          clearTimeout(fallbackTimer);
+          fallbackTimer = null;
+        }
+      }
+
+      btn.addEventListener('click', openModal);
+
+      // Close on backdrop click.
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal || e.target === container) {
+          closeModal();
+        }
+      });
+
+      // Close on Escape.
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+          closeModal();
+        }
+      });
+
+      // Hide loader when iframe loads.
+      iframe.addEventListener('load', function() {
+        loader.style.display = 'none';
+        if (fallbackTimer) {
+          clearTimeout(fallbackTimer);
+          fallbackTimer = null;
+        }
+      });
+
+      // Handle Tymeslot resize messages.
+      window.addEventListener('message', function(e) {
+        if (e.origin !== 'https://time.sialer.com') return;
+        if (!e.data || typeof e.data !== 'object') return;
+        if (e.data.type === 'tymeslot-resize') {
+          const height = Number(e.data.height);
+          if (Number.isFinite(height) && height > 0) {
+            const maxHeight = window.innerHeight - 64;
+            iframe.style.height = Math.min(height, maxHeight) + 'px';
+          }
+        }
+      });
+
+      // Preload embed script after window load for faster subsequent interactions.
+      if (document.readyState === 'complete') {
+        loadEmbedScript();
+      } else {
+        window.addEventListener('load', loadEmbedScript);
+      }
+    })();
+  </script>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
