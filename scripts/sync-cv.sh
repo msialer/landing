@@ -3,7 +3,8 @@ set -euo pipefail
 
 # Sync the latest CV from Google Drive to the landing page repo.
 # The CV is expected to match the pattern:
-#   *Head-of-Digital-Product-Growth* (ENG YYYY.MM.DD*).pdf
+#   Mauricio-Sialer-Head-of-Product-Digital-Commerce (EN AAAA.MM.DDx).pdf
+# where AAAA.MM.DD is the date and x is the version letter (a-z, z is newest).
 # Google Drive folder ID:
 GDRIVE_FOLDER_ID="1WD8jqkP68A948oBiBsWv-eiRcLTtcJtw"
 
@@ -13,12 +14,14 @@ REMOTE_DIR="gdrive:"
 
 echo "[$(date -Iseconds)] Starting CV sync..."
 
-# List PDFs in the CV folder and find the one with the most recent date in the filename.
+# List PDFs in the CV folder and find the one with the most recent date and highest
+# version letter in the filename. Example:
+#   Mauricio-Sialer-Head-of-Product-Digital-Commerce (EN 2026.08.06b).pdf
 LATEST_REMOTE=$(rclone lsf "${REMOTE_DIR}" \
   --drive-root-folder-id "${GDRIVE_FOLDER_ID}" \
   --include "*.pdf" 2>/dev/null \
-  | grep -i "Head-of-Digital-Product-Growth" \
-  | sort -t'(' -k2 -r \
+  | grep -i "Mauricio-Sialer-Head-of-Product-Digital-Commerce" \
+  | sort -t'(' -k2,2 -r \
   | head -n1)
 
 if [ -z "${LATEST_REMOTE}" ]; then
