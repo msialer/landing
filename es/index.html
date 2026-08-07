@@ -12,6 +12,7 @@
   <link rel="alternate" hreflang="en" href="https://mauricio.sialer.com/" />
   <link rel="alternate" hreflang="es" href="https://mauricio.sialer.com/es/" />
   <link rel="alternate" hreflang="x-default" href="https://mauricio.sialer.com/" />
+
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
@@ -145,6 +146,13 @@
 </head>
 
 <body class="bg-[#F2F2F2] text-ink font-sans antialiased leading-relaxed">
+
+  <!-- Language switcher -->
+  <div class="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 text-sm font-medium">
+    <a href="/" onclick="localStorage.setItem('lang', 'en');" class="text-ink/60 hover:text-ink transition" aria-label="English">EN</a>
+    <span class="text-ink/30 mx-1">|</span>
+    <a href="/es/" onclick="localStorage.setItem('lang', 'es');" class="text-accent" aria-label="Español">ES</a>
+  </div>
 
   <main>
     <div class="bg-white">
