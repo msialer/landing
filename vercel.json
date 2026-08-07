@@ -6,11 +6,19 @@
   },
   "routes": [
     {
-      "src": "/mauricio-sialer-cv.pdf",
-      "dest": "/mauricio-sialer-cv.pdf",
+      "src": "/mauricio-sialer-cv-en.pdf",
+      "dest": "/mauricio-sialer-cv-en.pdf",
       "headers": {
         "Content-Type": "application/pdf",
         "Content-Disposition": "attachment; filename=\"Mauricio-Sialer-CV.pdf\""
+      }
+    },
+    {
+      "src": "/mauricio-sialer-cv-es.pdf",
+      "dest": "/mauricio-sialer-cv-es.pdf",
+      "headers": {
+        "Content-Type": "application/pdf",
+        "Content-Disposition": "attachment; filename=\"Mauricio-Sialer-CV-ES.pdf\""
       }
     }
   ],
