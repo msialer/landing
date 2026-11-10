@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es" class="bg-[#F2F2F2]">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Política de privacidad | Mauricio Sialer</title>
+  <meta name="description" content="Este sitio, mauricio.sialer.com, es la página personal de Mauricio Sialer, quien es responsable de él." />
+  <meta name="author" content="Mauricio Sialer" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://mauricio.sialer.com/privacidad" />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mauricio.sialer.com/privacidad" />
+  <meta property="og:site_name" content="Mauricio Sialer" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:title" content="Política de privacidad | Mauricio Sialer" />
+  <meta property="og:description" content="Este sitio, mauricio.sialer.com, es la página personal de Mauricio Sialer, quien es responsable de él." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#faf9f7',
+            ink: '#171412',
+            accent: '#FD7402',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html {
+      height: auto;
+    }
+    body {
+      height: auto;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overscroll-behavior-y: none;
+    }
+    .balance { text-wrap: balance; }
+    /* Text-only links: accent underline, medium weight */
+    .link-accent {
+      text-decoration: underline;
+      text-decoration-color: #FD7402;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 8px;
+      transition: text-decoration-color 150ms ease;
+    }
+    .link-accent:hover { text-decoration-color: #c35a01; }
+  </style>
+</head>
+
+<body class="bg-[#F2F2F2] text-ink font-sans antialiased leading-relaxed">
+
+  <!-- Language switcher -->
+  <div class="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 text-sm font-medium">
+    <a href="/" onclick="localStorage.setItem('lang', 'en');" class="text-ink/60 hover:text-ink transition" aria-label="English">EN</a>
+    <span class="text-ink/30 mx-1">|</span>
+    <a href="/es/" onclick="localStorage.setItem('lang', 'es');" class="text-accent" aria-label="Español">ES</a>
+  </div>
+
+  <main>
+    <article class="max-w-5xl mx-auto px-6 sm:px-10 pt-20 pb-16 sm:pt-28 sm:pb-24">
+      <h1 class="font-serif text-4xl sm:text-5xl font-semibold tracking-tight balance">Política de privacidad</h1>
+      <p class="mt-6 text-sm sm:text-base text-ink/70">Última actualización: <time datetime="2026-11-09">9 de noviembre de 2026</time>.</p>
+
+      <div class="mt-10 max-w-3xl text-lg sm:text-xl text-ink" style="line-height:1.8">
+        <p><strong>Responsable.</strong> Este sitio, mauricio.sialer.com, es la página personal de Mauricio Sialer, quien es responsable de él.</p>
+        <p class="mt-8"><strong>Qué datos se recogen.</strong> El sitio no tiene formularios, analítica ni cookies, y no te pide datos personales. Al visitarlo se generan solo estos datos técnicos:</p>
+        <ul class="mt-4 list-disc pl-6 space-y-4">
+          <li>Vercel, el proveedor de hosting, registra la dirección IP, el navegador, la página visitada y la hora de cada visita.</li>
+          <li>Las páginas cargan tipografías de Google Fonts y estilos del CDN de Tailwind. Para entregarlos, Google y Tailwind reciben tu dirección IP y los datos de tu navegador. No ponen cookies.</li>
+          <li>Si eliges idioma, tu preferencia se guarda en tu propio navegador (localStorage). La página de inicio también lee el idioma de tu navegador para mostrarte la versión en español. Esa información no sale de tu navegador.</li>
+        </ul>
+        <p class="mt-8"><strong>Para qué se usan.</strong> Los registros del hosting sirven solo para que el sitio funcione, sea seguro y se puedan resolver problemas técnicos. Mauricio Sialer no usa estos datos para perfilarte ni para publicidad.</p>
+        <p class="mt-8"><strong>Con quién se comparten.</strong> Los datos no se venden. Fuera de los proveedores mencionados, que los reciben al entregar el sitio, no se comparten con nadie.</p>
+        <p class="mt-8"><strong>Contacto.</strong> Si tienes alguna pregunta sobre esta política, escribe a <a href="mailto:hello@sialer.com" class="font-semibold text-ink link-accent">hello@sialer.com</a>.</p>
+      </div>
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#F2F2F2]">
+    <div class="max-w-5xl mx-auto px-6 sm:px-10 py-10 text-sm text-ink/70">
+      © <span id="year">2026</span> Mauricio Sialer&nbsp;|&nbsp;
+      <a href="https://mauricio.sialer.com" class="hover:text-ink transition">mauricio.sialer.com</a>
+      &nbsp;|&nbsp;
+      <a href="mailto:mauricio@sialer.com" class="hover:text-ink transition">mauricio@sialer.com</a>
+      &nbsp;|&nbsp;
+      <a href="https://linkedin.com/in/msialer" target="_blank" rel="noopener" class="hover:text-ink transition">linkedin.com/in/msialer</a>
+      &nbsp;|&nbsp;
+      <a href="/privacidad" class="hover:text-ink transition" aria-current="page">Privacidad</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
